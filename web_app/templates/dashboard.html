@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plant Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>Plant Dashboard</h1>
+    </header>
+    <main>
+        <div class="grid-container">
+            <div class="grid-item image-container">
+                <h2>The plant capture</h2>
+                <img src="{{ image_url }}" alt="Plant Image">
+            </div>
+            <div class="grid-item plant-info">
+                <h2>Plant Information</h2>
+                <p>Plant : {{ plant_class }}</p>
+            </div>
+
+            <div class="grid-item watering">
+                <div class="soil-moisture-bar">
+                    <p>Soil Moisture: {{ soil_moisture }}</p>
+                </div>
+                <p>Watering Recommendation: {{ watering_message }}</p>
+            </div>
+                
+            <div class="grid-item plant-health">
+                <h2>Plant Health</h2>
+                {% if disease_name %}
+                    <p>Status: {{ disease_name }}</p>
+                    <p>Information: {{ disease_info }}</p>
+                {% else %}
+                    <p>Status: Healthy</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>
