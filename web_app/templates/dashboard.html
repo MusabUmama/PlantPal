@@ -1,41 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Plant Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Plant Dashboard</h1>
-    </header>
-    <main>
-        <div class="grid-container">
-            <div class="grid-item image-container">
-                <h2>The plant capture</h2>
-                <img src="{{ image_url }}" alt="Plant Image">
-            </div>
-            <div class="grid-item plant-info">
-                <h2>Plant Information</h2>
-                <p>Plant : {{ plant_class }}</p>
-            </div>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='images/PlantPal.png') }}" alt="App Logo" class="logo">
+    </nav>
 
-            <div class="grid-item watering">
-                <div class="soil-moisture-bar">
-                    <p>Soil Moisture: {{ soil_moisture }}</p>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <header>
+                <h1>Welcome to the Dashboard</h1>
+            </header>
+
+            <div class="grid-container">
+                <div class="grid-item image-container">
+                    <h2>The Plant Capture</h2>
+                    <img src="{{ image_url }}" alt="Plant Image">
                 </div>
-                <p>Watering Recommendation: {{ watering_message }}</p>
+
+                <div class="grid-item plant-info">
+                    <h2>Plant Information</h2>
+                    <p>Plant: {{ plant_class }}</p>
+                    <p>{{ plant_info }}</p>
+                </div>
+
+                <div class="grid-item plant-health">
+                    <h2>Plant Health</h2>
+                    {% if disease_name %}
+                        <p>Status: {{ disease_name }}</p>
+                        <p>{{ disease_info }}</p>
+                    {% else %}
+                        <p>Status: Healthy</p>
+                    {% endif %}
+                </div>
+
+                <div class="grid-item watering">
+                    <h2>Soil Moisture</h2>
+                    <p class="watering_message">Current read: {{ soil_moisture }}</p>
+                    <p class="watering_message">{{ watering_message }}</p>
+                </div>
+
+                <div class="grid-item user-details">
+                    <p>Mus-ab Umama</p>
+                    <p>20210014/2122098</p>
+                    <p>
+                        <a href="https://www.linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/your-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </p>
+                </div>
+
+                <div class="grid-item notice">
+                    <h2>Notice</h2>
+                    <p>This is just a demo application and not the final product. This does not contain all the features of the application.</p>
+                </div>
             </div>
-                
-            <div class="grid-item plant-health">
-                <h2>Plant Health</h2>
-                {% if disease_name %}
-                    <p>Status: {{ disease_name }}</p>
-                    <p>Information: {{ disease_info }}</p>
-                {% else %}
-                    <p>Status: Healthy</p>
-                {% endif %}
-            </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </body>
 </html>

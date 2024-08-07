@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantPal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='images/PlantPal.png') }}" alt="App Logo" class="logo">
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <img src="{{ url_for('static', filename='images/PlantPal.png') }}" alt="App Logo" class="main-logo">
+            <h1>Welcome to PlantPal</h1>
+            <p>Your personal home plant health and monitoring assistant.</p>
+            <a href="{{ url_for('dashboard') }}" class="button">Go to Dashboard</a>
+        </section>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Plant Health Monitoring</h3>
+                    <p>Keep track of your plant's health and receive timely updates.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tint"></i>
+                    <h3>Watering Reminders</h3>
+                    <p>Get notified when your plants need watering.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bug"></i>
+                    <h3>Disease Detection</h3>
+                    <p>Identify plant diseases early with our advanced detection system.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 PlantPal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
